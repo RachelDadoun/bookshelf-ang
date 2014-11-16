@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html data-ng-app="library">
+  <head>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="tab2.css" />
+<!--<script type="text/javascript" src="angular.min.js"></script>-->
+<script type="text/javascript" src="angular.js"></script>
+<script type="text/javascript" src="bookang.js"></script>
+  </head>
+  <body >
+<div data-ng-controller="LibeController as libe">
+<h1>My Book Shelf </br> <small><cite>Using Angular & Bootsrap</cite></small></h1>
+<div id="dt"></div>
+<div class="input-group">
+<div class="input-group-btn">
+  <button class="btn btn-default" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Add a book  <span class="glyphicon glyphicon-book" aria-hidden="true"></span></button>
+  <button data-ng-click="deleteBooks()" class="btn btn-default">Clear all  <span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
+    <button class="btn btn-default " aria-expanded="true">   
+    <span class="glyphicon glyphicon-search" aria-hidden="true"> Search</span>
+	</button>
+</div> 
+<input type="text" class="form-control" data-ng-model="strSearch">   
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-ng-click="savePrevData()" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="exampleModalLabel">Add/Modify Book</h4>
+      </div>
+      <div class="modal-body">
+<form name="bookForm" data-ng-submit="bookForm.$valid && addBook()" 
+							class="form-inline"
+							 novalidate>
+
+							 <blockquote >
+			<div>{{newBook.bookName}}</div>
+			<cite>by:{{newBook.authorName}}</cite>
+			<b>Score:{{newBook.score}}</b>		
+		</blockquote>		
+		 <input data-ng-model="newBook.bookName" type="text" required/>
+		 <label>by:</label>
+		 <input data-ng-model="newBook.authorName" type="text" required/>
+		 <input data-ng-model="newBook.score" type="text" required/>
+		 <div>reviewForm is {{bookForm.$valid}}</div>
+		 
+	</form>
+</div>
+      <div class="modal-footer">
+	  <button type="button" class="btn btn-default" data-ng-click="bookForm.$valid && addBook()" data-dismiss="modal"> <span class="glyphicon glyphicon-save" aria-hidden="true" ></span>Save</button>
+        <button type="button" class="btn btn-default" data-ng-click="savePrevData()" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+	
+ <div data-ng-repeat="book in books | orderBy:book.bookName | filter:strSearch" class="lala">
+  <div id="bookList" class="panel panel-default bg-info">
+  <div class="panel-body" >
+  <div class="btn-group btn-group-sm right" role="group">
+  <button class="btn btn-default" data-ng-click="editMe($index)" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo"><span class="glyphicon glyphicon-pencil"></span></button>
+  <button class="btn btn-default" data-ng-click="deleteMe($index)"><span data-ng-show="book.fDelete" class="glyphicon glyphicon-trash"></span></button>
+  </div>
+ <!-- <span data-ng-show="book.save" class="glyphicon-save right"></span> -->
+  <h4>{{book.bookName | uppercase}}</h4>
+  <cite> By : {{book.authorName }}</cite>
+  <h6> Score : {{book.score | limitTo:2}}</h6>  
+    </div>
+</div>	
+ </div>	
+</div>	
+</body>
+</html>
+
