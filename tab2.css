@@ -1,0 +1,31 @@
+.ng-invalid.ng-dirty{
+border-color:#FA787E;
+}
+.ng-valid.ng-dirty{
+border-color:#78FA89;
+}
+#bookList  {
+	width: 50%;
+}
+.lala
+{
+padding:10px;
+padding-left:30%;
+}
+
+.left {
+	float: left;
+}
+
+.right {
+	float: right;
+}
+
+.center {
+	width: 40% !important;
+	text-align: center;
+}
+h1
+{
+text-align:center;
+}
