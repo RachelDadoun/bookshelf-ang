@@ -4,7 +4,7 @@ app.controller('LibeController',function($scope){
 $scope.books=booksArr;
 $scope.newBook={};
 var seq = 0;
-var mt = moment().format('dddd MMMM Do YYYY');
+var mt = moment().format('LL');
 document.getElementById("dt").innerHTML = mt.toString();
 
 $scope.addBook=function(){
