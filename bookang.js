@@ -5,7 +5,7 @@ $scope.books=booksArr;
 $scope.newBook={};
 var seq = 0;
 var mt = moment().format('MMMM Do YYYY, h:mm:ss a'); // November 17th 2014, 6:28:24 pm
-document.getElementById("dt").innerHTML = mt.toDateString();
+document.getElementById("dt").innerHTML = mt.toString();
 
 $scope.addBook=function(){
 	
