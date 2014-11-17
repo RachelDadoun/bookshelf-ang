@@ -65,7 +65,7 @@
 </div>
 
 	
- <div data-ng-repeat="book in books | orderBy:book.bookName | filter:strSearch" class="lala">
+ <div data-ng-repeat="book in books | orderBy:book.bookName | filter:strSearch track by $id(book)" class="lala">
   <div id="bookList" class="panel panel-default bg-info">
   <div class="panel-body" >
   <div class="btn-group btn-group-sm right" role="group">
